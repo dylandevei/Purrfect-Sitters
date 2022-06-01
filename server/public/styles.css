@@ -1,0 +1,32 @@
+.profile-header{
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.profile-tagline{
+  font-size: .75rem;
+  text-align: center;
+}
+
+.profile-aboutme{
+  font-size: .75rem;
+  text-align: center;
+}
+
+.sitters-header{
+  text-align: center;
+  font-size: 3rem;
+
+}
+
+.sitter-profile{
+  padding: 2rem 0;
+}
+
+.lato{
+  font-family: 'Lato', sans-serif;
+}
+
+.raleway{
+  font-family: 'Raleway',sans-serif;
+}
