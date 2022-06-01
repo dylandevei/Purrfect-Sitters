@@ -1,10 +1,12 @@
 import React from 'react';
-import HelloWorld from '../components/hello-world';
+import SittersPage from '../components/sitters-page';
+import Header from '../components/header';
 
 export default function Home(props) {
   return (
     <div>
-      <HelloWorld />
+      <Header />
+      <SittersPage />
     </div>
   );
 }
