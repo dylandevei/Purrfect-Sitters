@@ -1,8 +1,7 @@
 import React from 'react';
-import reactDom from 'react-dom';
 
 export default class SittersPage extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       users: [],
@@ -10,25 +9,25 @@ export default class SittersPage extends React.Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch('/api/users')
-    .then(res => res.json())
-    .then(sitters => this.setState(prevState =>({
-      users: sitters,
-      isLoading: false
-    })));
+      .then(res => res.json())
+      .then(sitters => this.setState(prevState => ({
+        users: sitters,
+        isLoading: false
+      })));
   }
 
-render() {
-  return this.state.isLoading
-    ? <p>loading...</p>
-    : <Users users={this.state.users} />;
+  render() {
+    return this.state.isLoading
+      ? <p>loading...</p>
+      : <Users users={this.state.users} />;
   }
 }
 
-function User(props){
+function User(props) {
   return (
-      <div className="container-fluid">
+      <div className="container-sm">
         <div className='sitter-profile'>
         <div className="row">
           <div className="col">
@@ -47,7 +46,7 @@ function User(props){
   );
 }
 
-function Users(props){
+function Users(props) {
   return (
     <>
     <h1 className='sitters-header raleway'>Sitters Near You</h1>
