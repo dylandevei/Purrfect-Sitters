@@ -4,57 +4,55 @@ export default class SittersPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
-      isLoading: true
+      users: []
     };
   }
 
   componentDidMount() {
     fetch('/api/users')
       .then(res => res.json())
-      .then(sitters => this.setState(prevState => ({
-        users: sitters,
-        isLoading: false
+      .then(users => this.setState(prevState => ({
+        users: users
       })));
   }
 
   render() {
-    return this.state.isLoading
-      ? <p>loading...</p>
-      : <Users users={this.state.users} />;
+    return (
+      <div className='container'>
+        <h1 className='sitters-header raleway'>Sitters Near You</h1>
+        <div className='row'>
+          {
+            this.state.users.map(user => (
+              <div key={user.userId}>
+                <User user={user} />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    );
   }
 }
 
 function User(props) {
+  const {userId, imageUrl, fullName, tagline, city, aboutMe} = props.user;
   return (
-      <div className="container-sm">
-        <div className='sitter-profile'>
+    <div className="container-md">
+      <div className='sitter-profile'>
         <div className="row">
           <div className="col">
-          <img className='img-thumbnail' src={props.user.imageUrl} alt="profile images for users" />
+            <a href={`#users?userId=${userId}`}>
+            <img className='img-thumbnail' src={imageUrl} alt="profile images for users" />
+            </a>
           </div>
           <div className="col">
-            <h2 className='profile-header raleway'>{props.user.fullName}</h2>
-            <h3 className='profile-tagline lato'>{props.user.tagline}</h3>
-            <p className='profile-aboutme lato'>Location: {props.user.city}</p>
-            <p className='profile-aboutme lato'>{props.user.aboutMe}</p>
+            <h2 className='profile-header raleway'>{fullName}</h2>
+            <h3 className='profile-tagline lato'>{tagline}</h3>
+            <p className='profile-aboutme lato'>Location: {city}</p>
+            <p className='profile-aboutme lato'>{aboutMe}</p>
           </div>
         </div>
       </div>
-      </div>
-
-  );
-}
-
-function Users(props) {
-  return (
-    <>
-    <h1 className='sitters-header raleway'>Sitters Near You</h1>
-      {
-        props.users.map(user => {
-          return <User key={user.userId} user={user} />;
-        })
-      }
-    </>
+    </div>
   );
 }

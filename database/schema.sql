@@ -55,6 +55,7 @@ CREATE TABLE "public"."sitterProfile" (
 	"streetAddress" TEXT NOT NULL,
 	"city" TEXT NOT NULL,
 	"zipCode" TEXT NOT NULL,
+	"state" TEXT NOT NULL,
 	"tagline" TEXT NOT NULL,
 	"petSpecialty" TEXT NOT NULL,
 	"service1" TEXT,
@@ -62,6 +63,10 @@ CREATE TABLE "public"."sitterProfile" (
 	"service3" TEXT,
 	"service4" TEXT,
 	"aboutMe" TEXT NOT NULL,
+	"service1Price" TEXT,
+	"service2Price" TEXT,
+	"service3Price" TEXT,
+	"service4Price" TEXT,
 	CONSTRAINT "sitterProfile_pk" PRIMARY KEY ("profileId")
 ) WITH (
   OIDS=FALSE

@@ -6,27 +6,28 @@ values
 
 insert into "sitterProfile"
       ("userId","imageUrl","fullName", "phoneNumber",
-       "streetAddress", "city", "zipCode",
+       "streetAddress", "city", "zipCode", "state",
        "tagline", "petSpecialty","service1",
-       "service2", "service3", "service4",
+       "service2", "service3", "service4", "service1Price",
+       "service2Price", "service3Price", "service4Price",
        "aboutMe")
 values ('1','https://a.espncdn.com/combiner/i?img=/i/teamlogos/mlb/500/lad.png&h=200&w=200',
         'Dylan De Vei', '7143309721',
-        '2000 20th Street', 'Huntington Beach', '92648',
+        '2000 20th Street', 'Huntington Beach', '92648', 'CA',
         'I am the dog whisperer!', 'Dog', 'house sitting',
-        'drop-by visits', 'dog-walking','overnight boarding',
+        'drop-by visits', 'dog-walking','overnight boarding', '45', '60', '70', '100',
         'I have been pet sitting for 10 years, I am beyond qualified'),
         ('2','https://upload.wikimedia.org/wikipedia/en/a/a3/IAT_Crash_Bandicoot.png',
         'Crash Bandicoot', '2813308004',
-        '124 A Street', 'Los Angeles', '92091',
+        '124 A Street', 'Los Angeles', '92091', 'CA',
         'I love animals, I love everyone!', 'Cat', 'house sitting',
-        'drop-by visits', 'dog-walking','overnight boarding',
+        'drop-by visits', 'dog-walking','overnight boarding', '45', '60', '70', '100',
         'awesome bandicoot, looking for more money'),
         ('3','https://i.ytimg.com/vi/0yw2CSX-7Sk/maxresdefault.jpg',
         'Duke Nukem', '9499491000',
-        '999 B Street', 'Los Angeles', '92091',
+        '999 B Street', 'Los Angeles', '92091', 'CA',
         'I came here to pet sit and chew bubblegum, and Im all out of gum', 'Dog', 'house sitting',
-        'drop-by visits', 'dog-walking','overnight boarding',
+        'drop-by visits', 'dog-walking','overnight boarding', '45', '60', '70', '100',
         'Duke Nukem is here to help!')
 
         ;
