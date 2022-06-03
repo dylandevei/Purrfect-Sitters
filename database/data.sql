@@ -6,28 +6,30 @@ values
 
 insert into "sitterProfile"
       ("userId","imageUrl","fullName", "phoneNumber",
-       "streetAddress", "city", "zipCode",
+       "streetAddress", "city", "zipCode", "state",
        "tagline", "petSpecialty","service1",
-       "service2", "service3", "service4",
+       "service2", "service3", "service4", "service1Price",
+       "service2Price", "service3Price", "service4Price",
        "aboutMe")
-values ('1','https://a.espncdn.com/combiner/i?img=/i/teamlogos/mlb/500/lad.png&h=200&w=200',
+values ('1','https://content.sportslogos.net/logos/54/63/full/los_angeles_dodgers_logo_primary_19727081.png',
         'Dylan De Vei', '7143309721',
-        '2000 20th Street', 'Huntington Beach', '92648',
+        '2000 20th Street', 'Huntington Beach', '92648', 'CA',
         'I am the dog whisperer!', 'Dog', 'house sitting',
-        'drop-by visits', 'dog-walking','overnight boarding',
-        'I have been pet sitting for 10 years, I am beyond qualified'),
+        'drop-by visits', 'dog-walking','overnight boarding', '45', '60', '70', '100',
+        'One of the most successful and storied franchises in MLB, the Dodgers have won seven World Series championships and a record 24 National League pennants. Eleven NL MVP award winners have played for the Dodgers, winning a total of 14. Eight Cy Young Award winners have pitched for the club, winning a total of 12—by far the most of any Major League franchise. Additionally, the Dodgers boast 18 Rookie of the Year Award winners—twice as many as the next club. This includes four consecutive Rookies of the Year from 1979 to 1982 and five consecutive from 1992 to 1996. From 1884 through 2021, the Dodgers all-time record is 11,123-9,891 (.529).'),
         ('2','https://upload.wikimedia.org/wikipedia/en/a/a3/IAT_Crash_Bandicoot.png',
         'Crash Bandicoot', '2813308004',
-        '124 A Street', 'Los Angeles', '92091',
-        'I love animals, I love everyone!', 'Cat', 'house sitting',
-        'drop-by visits', 'dog-walking','overnight boarding',
-        'awesome bandicoot, looking for more money'),
+        '1313 Disneyland Dr', 'Anaheim', '92082', 'CA',
+        'I love animals, I love everyone!', 'Cat', 'House Sitting',
+        'Drop-by Visits', 'Dog-walking','Overnight Boarding', '45', '60', '70', '100',
+        'Crash Bandicoot is the titular main protagonist of the video game series and media franchise of the same name.
+He was once an ordinary bandicoot until he was exposed to the Evolvo-Ray by his arch-nemesis, Dr. Neo Cortex, as part of his plan to create an army of mutant animals to takeover the world. However, Cortexs mind control device malfunctioned, causing Crash to turn against Cortex, the two then became arch-enemies as Crash sets out to stop all of Cortexs evil schemes.'),
         ('3','https://i.ytimg.com/vi/0yw2CSX-7Sk/maxresdefault.jpg',
         'Duke Nukem', '9499491000',
-        '999 B Street', 'Los Angeles', '92091',
+        '999 B Street', 'Los Angeles', '92091', 'CA',
         'I came here to pet sit and chew bubblegum, and Im all out of gum', 'Dog', 'house sitting',
-        'drop-by visits', 'dog-walking','overnight boarding',
-        'Duke Nukem is here to help!')
+        'drop-by visits', 'dog-walking','overnight boarding', '45', '60', '70', '100',
+        'Duke Nukem is an American hero and worldwide cultural icon who has repeatedly saved Earth from armies of hostile robots, alien invaders, and mutant pig cops. He is the protagonist of an entire franchise named after him')
 
         ;
 

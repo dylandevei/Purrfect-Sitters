@@ -1,11 +1,10 @@
 import React from 'react';
 import SittersPage from '../components/sitters-page';
-import Header from '../components/header';
+import SitterProfile from '../components/sitter-profile';
 
 export default function Home(props) {
   return (
     <div>
-      <Header />
       <SittersPage />
     </div>
   );
