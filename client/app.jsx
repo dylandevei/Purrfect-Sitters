@@ -5,13 +5,6 @@ import SittersPage from './components/sitters-page';
 import Home from './pages/home';
 import {parseRoute} from './lib';
 
-
-// export default class App extends React.Component {
-//   render() {
-//     return <Home />;
-//   }
-// }
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
