@@ -1,5 +1,5 @@
 require('dotenv/config');
-const db = require('./db')
+const db = require('./db');
 const path = require('path');
 const express = require('express');
 const ClientError = require('./client-error');
@@ -13,28 +13,27 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('./dev-middleware')(publicPath));
 }
 
-app.use(express.static(publicPath));
 app.use(staticMiddleware);
 
 app.get('/api/users', (req, res) => {
-  const sql =  `
+  const sql = `
     select * from "sitterProfile"
   `;
 
   const params = sql.body;
 
-  db.query(sql,params)
-  .then(result => {
-    const users = result.rows;
-    res.status(200).json(users);
-  }
-  )
-  .catch(err=> {
-    console.error(err);
-    res.status(500).json({
-      error: 'an error occured.'
+  db.query(sql, params)
+    .then(result => {
+      const users = result.rows;
+      res.status(200).json(users);
+    }
+    )
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an error occured.'
+      });
     });
-  });
 });
 
 app.get('/api/users/:userId', (req, res, next) => {
