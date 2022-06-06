@@ -47,7 +47,7 @@ function User(props) {
       <div className='sitter-profile'>
         <div className="row">
           <div className="col">
-            <a href={`#users?userId=${userId}`}>
+            <a href={`#sitters?userId=${userId}`}>
               <img className='img-fluid rounded mx-auto d-block' src={imageUrl} alt={fullName} />
             </a>
           </div>

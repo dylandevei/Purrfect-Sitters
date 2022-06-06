@@ -43,7 +43,7 @@ app.get('/api/sitters', (req, res) => {
 
 app.get('/api/pets', (req, res) => {
   const sql = `
-    select * from "petProfile"
+    select * from "pets"
   `;
 
   const params = sql.body;
@@ -94,7 +94,7 @@ app.get('/api/pets/:petId', (req, res, next) => {
   const sql = `
     select *
 
-      from "petProfile"
+      from "pets"
      where "petId" = $1
   `;
   const params = [petId];

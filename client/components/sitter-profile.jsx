@@ -39,11 +39,13 @@ export default class SitterProfile extends React.Component {
             <div className="row mb-4">
               <div className="col-12 col-sm-6 col-md-5">
               <img className='img-fluid rounded mx-auto d-block mb-5' src={imageUrl} alt={fullName} />
-                <a href={`#users?petId=${petId}`}>pet</a>
+                <a href={`#pets?petId=${petId}`}>pet</a>
                 <table className="table text-center mb-3 lato">
                   <thead className='raleway fs-4'>
-                    <th>Services</th>
-                    <th>Daily Rates</th>
+                    <tr>
+                      <th>Services</th>
+                      <th>Daily Rates</th>
+                    </tr>
                   </thead>
                   <tbody className='fs-5'>
                     <tr>

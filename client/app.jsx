@@ -28,7 +28,7 @@ export default class App extends React.Component {
     if (route.path === '') {
       return <Home />;
     }
-    else if (route.path === 'users') {
+    else if (route.path === 'sitters') {
       const userId = route.params.get('userId');
       return <SitterProfile userId={userId} />;
     }
