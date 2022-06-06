@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/header';
 import SitterProfile from './components/sitter-profile';
 import SittersPage from './components/sitters-page';
+import PetProfile from './components/pet-profile';
 import Home from './pages/home';
 import {parseRoute} from './lib';
 
@@ -27,9 +28,13 @@ export default class App extends React.Component {
     if (route.path === '') {
       return <Home />;
     }
-    if (route.path === 'users') {
+    else if (route.path === 'users') {
       const userId = route.params.get('userId');
       return <SitterProfile userId={userId} />;
+    }
+    else if (route.path === 'pets'){
+      const petId = route.params.get('petId');
+      return <PetProfile petId={petId} />;
     }
     return <NotFound />;
   }

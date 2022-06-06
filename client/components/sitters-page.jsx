@@ -9,7 +9,7 @@ export default class SittersPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/users')
+    fetch('/api/sitters')
       .then(res => res.json())
       .then(users => this.setState(prevState => ({
         users: users

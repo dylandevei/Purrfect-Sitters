@@ -18,7 +18,7 @@ CREATE TABLE "public"."users" (
 
 
 
-CREATE TABLE "public"."petProfile" (
+CREATE TABLE "public"."pets" (
 	"petId" serial NOT NULL,
 	"userId" int NOT NULL,
 	"imageUrl" TEXT NOT NULL,
@@ -38,14 +38,14 @@ CREATE TABLE "public"."petProfile" (
 	"foodSchedule" TEXT NOT NULL,
 	"bathroomRoutine" TEXT NOT NULL,
 	"additionalInformation" TEXT NOT NULL,
-	CONSTRAINT "petProfile_pk" PRIMARY KEY ("petId")
+	CONSTRAINT "pets_pk" PRIMARY KEY ("petId")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public"."sitterProfile" (
+CREATE TABLE "public"."sitters" (
 	"profileId" serial NOT NULL,
 	"userId" int NOT NULL,
 	"imageUrl" TEXT NOT NULL,
@@ -67,14 +67,14 @@ CREATE TABLE "public"."sitterProfile" (
 	"service2Price" TEXT,
 	"service3Price" TEXT,
 	"service4Price" TEXT,
-	CONSTRAINT "sitterProfile_pk" PRIMARY KEY ("profileId")
+	CONSTRAINT "sitters_pk" PRIMARY KEY ("profileId")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "public"."favoriteSitters" (
+CREATE TABLE "public"."favorites" (
 	"profileId" int NOT NULL,
 	"userId" int NOT NULL
 ) WITH (
@@ -96,7 +96,7 @@ CREATE TABLE "public"."comments" (
 
 
 
-CREATE TABLE "public"."friendsList" (
+CREATE TABLE "public"."friends" (
 	"userId" int NOT NULL,
 	"profileId" int NOT NULL
 ) WITH (
@@ -106,15 +106,15 @@ CREATE TABLE "public"."friendsList" (
 
 
 
-ALTER TABLE "petProfile" ADD CONSTRAINT "petProfile_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
+ALTER TABLE "pets" ADD CONSTRAINT "pets_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
 
-ALTER TABLE "sitterProfile" ADD CONSTRAINT "sitterProfile_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
+ALTER TABLE "sitters" ADD CONSTRAINT "sitters_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
 
-ALTER TABLE "favoriteSitters" ADD CONSTRAINT "favoriteSitters_fk0" FOREIGN KEY ("profileId") REFERENCES "sitterProfile"("profileId");
-ALTER TABLE "favoriteSitters" ADD CONSTRAINT "favoriteSitters_fk1" FOREIGN KEY ("userId") REFERENCES "users"("userId");
+ALTER TABLE "favorites" ADD CONSTRAINT "favorites_fk0" FOREIGN KEY ("profileId") REFERENCES "sitters"("profileId");
+ALTER TABLE "favorites" ADD CONSTRAINT "favorites_fk1" FOREIGN KEY ("userId") REFERENCES "users"("userId");
 
 ALTER TABLE "comments" ADD CONSTRAINT "comments_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
-ALTER TABLE "comments" ADD CONSTRAINT "comments_fk1" FOREIGN KEY ("profileId") REFERENCES "sitterProfile"("profileId");
+ALTER TABLE "comments" ADD CONSTRAINT "comments_fk1" FOREIGN KEY ("profileId") REFERENCES "sitters"("profileId");
 
-ALTER TABLE "friendsList" ADD CONSTRAINT "friendsList_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
-ALTER TABLE "friendsList" ADD CONSTRAINT "friendsList_fk1" FOREIGN KEY ("profileId") REFERENCES "sitterProfile"("profileId");
+ALTER TABLE "friends" ADD CONSTRAINT "friends_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
+ALTER TABLE "friends" ADD CONSTRAINT "friends_fk1" FOREIGN KEY ("profileId") REFERENCES "sitters"("profileId");
