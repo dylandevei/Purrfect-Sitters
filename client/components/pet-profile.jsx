@@ -10,7 +10,7 @@ export default class PetProfile extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/pets/${this.props.petId}`)
+    fetch(`/api/pets/${this.props.userId}`)
       .then(res => res.json())
       .then(pet => this.setState({ pet }));
   }

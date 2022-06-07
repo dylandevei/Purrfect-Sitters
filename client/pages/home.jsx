@@ -8,6 +8,7 @@ export default function Home(props) {
     <>
     <div>
       <SittersPage />
+      <SitterForm />
     </div>
     </>
   );

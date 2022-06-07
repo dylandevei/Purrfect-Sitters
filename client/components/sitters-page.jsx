@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class SittersPage extends React.Component {
   constructor(props) {
     super(props);
@@ -43,6 +44,7 @@ function User(props) {
   const cityState = `${city}, ${state}`
   const services = `Offers the following services: ${service1}, ${service2}, ${service3}, ${service4}`
   return (
+    <>
     <div className="container-md">
       <div className='sitter-profile'>
         <div className="row">
@@ -60,5 +62,7 @@ function User(props) {
         </div>
       </div>
     </div>
+      </>
+
   );
 }
