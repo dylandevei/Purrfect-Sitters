@@ -3,10 +3,9 @@ import reactDom from 'react-dom';
 import { useForm } from 'react-hook-form';
 
 export default function SitterForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     const req = {
       method: 'POST',
       headers: {
@@ -17,6 +16,7 @@ export default function SitterForm() {
     fetch(`/api/sitters`, req)
       .then(res => res.json())
       .catch(err => next(err));
+    reset();
       }
 
 
@@ -221,68 +221,3 @@ export default function SitterForm() {
     </div>
   );
 }
-
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-
-// export default class SitterForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       username: '',
-//       password: '',
-//       select1: ''
-//     };
-
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     this.handleUsernameChange = this.handleUsernameChange.bind(this);
-//     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-//     this.handleSelectChange = this.handleSelectChange.bind(this);
-
-//   }
-
-//   handleSubmit(event) {
-//     console.log('state:', this.state);
-//     event.preventDefault();
-//   }
-
-//   handleUsernameChange(event) {
-//     this.setState({ username: event.target.value });
-//   }
-
-//   handlePasswordChange(event) {
-//     this.setState({ password: event.target.value });
-//   }
-
-//   handleSelectChange(event){
-//     this.setState({select: event.target.value});
-//   }
-
-//   render() {
-//     return (
-//       <form className='d-flex justify-content-center' onSubmit={this.handleSubmit}>
-//         <div>
-//         <label>
-//           Username
-//           <input type="text" value={this.state.username} onChange={this.handleUsernameChange} />
-//         </label>
-//         </div>
-//         <label>
-//           Password
-//           <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-//         </label>
-//         <div>
-//         <label>
-//         <select className="form-select-md" aria-label="Default select example">
-//           <option selected>Service 1</option>
-//           <option value={this.handleSelectChange}>One</option>
-//           <option value="2">Two</option>
-//           <option value="3">Three</option>
-//         </select>
-//         </label>
-//         </div>
-//         <input type="submit" value="Sign Up" />
-//       </form>
-//     );
-//   }
-// }
