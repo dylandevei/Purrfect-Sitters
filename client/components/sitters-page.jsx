@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class SittersPage extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ export default class SittersPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/users')
+    fetch('/api/sitters')
       .then(res => res.json())
       .then(users => this.setState(prevState => ({
         users: users
@@ -43,11 +44,12 @@ function User(props) {
   const cityState = `${city}, ${state}`
   const services = `Offers the following services: ${service1}, ${service2}, ${service3}, ${service4}`
   return (
+    <>
     <div className="container-md">
       <div className='sitter-profile'>
         <div className="row">
           <div className="col">
-            <a href={`#users?userId=${userId}`}>
+            <a href={`#sitters?userId=${userId}`}>
               <img className='img-fluid rounded mx-auto d-block' src={imageUrl} alt={fullName} />
             </a>
           </div>
@@ -60,5 +62,7 @@ function User(props) {
         </div>
       </div>
     </div>
+      </>
+
   );
 }
