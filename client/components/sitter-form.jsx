@@ -7,7 +7,6 @@ export default function SitterForm() {
 
   const onSubmit = (data) => {
     console.log(data);
-      event.preventDefault();
     const req = {
       method: 'POST',
       headers: {
@@ -24,6 +23,7 @@ export default function SitterForm() {
 
 
   return (
+    <div className='container-sm px-4'>
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1 className='d-flex justify-content-center raleway'>Pet Sitter Form</h1>
       <div className='row'>
@@ -56,7 +56,7 @@ export default function SitterForm() {
         </div>
         <div className='col'>
           <select className='form-select mb-4' {...register("state", { required: true })}>
-            <option selected disabled>State</option>
+            <option defaultValue='' disabled>State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
             <option value="AZ">AZ</option>
@@ -124,7 +124,7 @@ export default function SitterForm() {
         <h1 className='d-flex justify-content-center raleway'>Services</h1>
         <div className='col'>
           <select className='form-select mb-1' {...register("service1", { required: true })}>
-            <option selected disabled>-Select a Service-</option>
+              <option defaultValue=''>-Select a Service-</option>
             <option value="Boarding">Boarding</option>
             <option value="House Sitting"> House Sitting</option>
             <option value="Doggy Day Care"> Doggy Day Care</option>
@@ -144,7 +144,7 @@ export default function SitterForm() {
       <div className='row'>
         <div className='col'>
           <select className='form-select mb-1'{...register("service2", { required: true })}>
-            <option selected disabled>-Select a Service-</option>
+              <option defaultValue=''>-Select a Service-</option>
             <option value="Boarding">Boarding</option>
             <option value="House Sitting"> House Sitting</option>
             <option value="Doggy Day Care"> Doggy Day Care</option>
@@ -164,7 +164,7 @@ export default function SitterForm() {
       <div className='row'>
         <div className='col'>
           <select className='form-select mb-1'{...register("service3", { required: true })}>
-            <option selected disabled>-Select a Service-</option>
+              <option defaultValue=''>-Select a Service-</option>
             <option value="Boarding">Boarding</option>
             <option value=" House Sitting"> House Sitting</option>
             <option value=" Doggy Day Care"> Doggy Day Care</option>
@@ -184,7 +184,7 @@ export default function SitterForm() {
       <div className='row'>
         <div className='col'>
           <select className='form-select' {...register("service4", { required: true })}>
-            <option selected>-Select a Service-</option>
+              <option defaultValue=''>-Select a Service-</option>
             <option value="Boarding">Boarding</option>
             <option value="House Sitting"> House Sitting</option>
             <option value="Doggy Day Care"> Doggy Day Care</option>
@@ -204,7 +204,7 @@ export default function SitterForm() {
       <div className='row'>
         <div className='d-flex justify-content-center mb-4'>
           <select className='form-select' {...register("petSpecialty", { required: true })}>
-            <option selected disabled>-Animal Specialty-</option>
+              <option defaultValue=''>-Animal Specialty-</option>
             <option value="Cat">Cat</option>
             <option value="Dog">Dog</option>
             <option value="Both">Both</option>
@@ -212,14 +212,13 @@ export default function SitterForm() {
         </div>
       </div>
 
-
       <textarea className='form-control mb-2' placeholder='Tell us about yourself!' {...register("aboutMe", { required: true })} />
-
       <div className='d-grid gap-2'>
         <input type="submit" className='btn btn-primary' />
       </div>
 
     </form>
+    </div>
   );
 }
 
