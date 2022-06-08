@@ -177,7 +177,7 @@ app.post('/api/sitters', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.post('/api/pets', (req, res, next) => {
+app.post('/api/users/pets', (req, res, next) => {
   const {
     userId,
     imageUrl,
