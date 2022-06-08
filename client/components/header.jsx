@@ -1,4 +1,5 @@
 import React from 'react';
+import SitterForm from './sitter-form';
 
 export default function Header(props) {
   return (
@@ -15,7 +16,10 @@ export default function Header(props) {
                 <a className='nav-link active' aria-current='page' href="#">Sitters</a>
               </li>
             <li className='nav-item'>
-              <a className='nav-link active' aria-current='page' href="#"></a>
+              <a className='nav-link active' aria-current='page' href="#sitter-form">Sitter Form</a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link active' aria-current='page' href="#pet-form">Pet Form</a>
             </li>
             </ul>
         </div>

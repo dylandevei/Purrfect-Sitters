@@ -10,7 +10,7 @@ export default class PetProfile extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/pets/${this.props.petId}`)
+    fetch(`/api/users/pets/${this.props.petId}`)
       .then(res => res.json())
       .then(pet => this.setState({ pet }));
   }
@@ -36,7 +36,7 @@ export default class PetProfile extends React.Component {
       <div className="container">
         <div className='row'>
         <div className="card shadow-lg">
-          <div className="card-body">
+          <div className="card-body mb-5">
             <div className='text-center'>
               <h2 className='display-1 raleway'>{petName}</h2>
               <h2 className='display-5 raleway'>{breed}</h2>
