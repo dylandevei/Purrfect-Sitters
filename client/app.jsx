@@ -5,6 +5,7 @@ import SittersPage from './components/sitters-page';
 import PetProfile from './components/pet-profile';
 import SitterForm from './components/sitter-form';
 import PetForm from './components/pet-form';
+import SignUp from './pages/sign-up';
 import Home from './pages/home';
 import {parseRoute} from './lib';
 
@@ -44,6 +45,9 @@ export default class App extends React.Component {
     }
     else if (route.path === 'pet-form') {
       return <PetForm />;
+    }
+    else if (route.path === 'sign-up') {
+      return <SignUp />;
     }
     return <NotFound />;
   }
