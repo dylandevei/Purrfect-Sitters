@@ -69,7 +69,8 @@ app.get('/api/sitters', (req, res) => {
 
 app.get('/api/users', (req, res) => {
   const sql = `
-    select * from "users"
+    select "userId", "username", "createdAt"
+    from "users"
   `;
 
   const params = sql.body;
@@ -137,11 +138,11 @@ app.get('/api/users/:userId', (req, res, next) => {
     throw new ClientError(400, 'userId must be a positive integer');
   }
   const sql = `
-    select *
-
-      from "users"
-     where "userId" = $1
+    select "userId", "username", "createdAt"
+    from "users"
+    where "userId" = $1
   `;
+
   const params = [userId];
   db.query(sql, params)
     .then(result => {
