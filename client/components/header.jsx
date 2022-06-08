@@ -4,7 +4,7 @@ import SitterForm from './sitter-form';
 export default function Header(props) {
   return (
 
-      <nav className="navbar navbar-fluid bg-info mb-4">
+      <nav className="navbar navbar-fluid bg-info">
         <div className="container-fluid">
         <a className='navbar-brand nav-text' href='#'>Purrfect Sitters</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

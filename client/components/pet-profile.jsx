@@ -45,7 +45,7 @@ export default class PetProfile extends React.Component {
             <div className="row mb-4 d-flex justify-content-center">
                 <div className="col">
                 <img className='img-fluid rounded mx-auto d-block mb-5' src={imageUrl} alt={petName} />
-                  <div className='lato col-12 col-sm-6 col-md-7 text-center'>
+                  <div className='lato col-12 col-sm-6 col-md-7 text-center mx-auto'>
                   <p>Vet Contact: {phoneNumber}</p>
                   <p>Age: {age}</p>
                   <p>Weight: {weight}</p>
