@@ -177,6 +177,73 @@ app.post('/api/sitters', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/users/pets', (req, res, next) => {
+  const {
+    userId,
+    imageUrl,
+    petType,
+    petName,
+    weight,
+    age,
+    sex,
+    breed,
+    favoriteToy,
+    spayedNeutered,
+    friendlyWithChildren,
+    friendlyWithAnimals,
+    vetContact,
+    foodType,
+    foodSchedule,
+    bathroomRoutine,
+    additionalInformation
+    } = req.body;
+
+  const sql = `
+    insert into "pets"
+    ("userId", "imageUrl", "petType", "petName",
+    "weight", "age", "sex", "breed", "favoriteToy",
+    "spayedNeutered", "friendlyWithChildren", "friendlyWithAnimals", "vetContact",
+    "foodType", "foodSchedule", "bathroomRoutine",
+    "additionalInformation")
+
+    values
+      ($1, $2, $3,
+      $4, $5, $6,
+      $7, $8, $9,
+      $10, $11, $12,
+      $13, $14, $15,
+      $16, $17)
+
+    returning *
+  `;
+
+  const params = [
+    userId,
+    imageUrl,
+    petType,
+    petName,
+    weight,
+    age,
+    sex,
+    breed,
+    favoriteToy,
+    spayedNeutered,
+    friendlyWithChildren,
+    friendlyWithAnimals,
+    vetContact,
+    foodType,
+    foodSchedule,
+    bathroomRoutine,
+    additionalInformation];
+
+  db.query(sql, params)
+    .then(result => {
+      const [newPet] = result.rows;
+      res.status(201).json(newPet);
+    })
+    .catch(err => next(err));
+});
+
 
 app.get('/api/users/pets/:userId', (req, res, next) => {
   const userId = Number(req.params.userId);

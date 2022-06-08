@@ -3,6 +3,7 @@ import reactDom from 'react-dom';
 import { useForm } from 'react-hook-form';
 
 export default function SitterForm() {
+
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
@@ -19,13 +20,10 @@ export default function SitterForm() {
     reset();
       }
 
-
-
-
   return (
     <div className='container-sm px-4'>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1 className='d-flex justify-content-center raleway'>Pet Sitter Form</h1>
+      <h1 className='d-flex justify-content-center raleway'>Become a Pet Sitter</h1>
       <div className='row'>
         <div className='col'>
           <input className='form-control mb-2' type="text" placeholder="user id" {...register("userId", { required: true })} />
@@ -214,7 +212,7 @@ export default function SitterForm() {
 
       <textarea className='form-control mb-2' placeholder='Tell us about yourself!' {...register("aboutMe", { required: true })} />
       <div className='d-grid gap-2'>
-        <input type="submit" className='btn btn-primary' />
+        <input type="submit" className='btn btn-primary mb-5' />
       </div>
 
     </form>
