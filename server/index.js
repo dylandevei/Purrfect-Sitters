@@ -1,6 +1,5 @@
 require('dotenv/config');
 const db = require('./db');
-const pg = require('pg');
 const path = require('path');
 const express = require('express');
 const argon2 = require('argon2');
@@ -8,7 +7,6 @@ const jwt = require('jsonwebtoken');
 const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
-
 
 const app = express();
 const publicPath = path.join(__dirname, 'public');
@@ -19,7 +17,6 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(staticMiddleware);
 app.use(express.json());
-
 
 app.post('/api/auth/sign-up', (req, res, next) => {
   const { username, password } = req.body;
@@ -44,7 +41,39 @@ app.post('/api/auth/sign-up', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/auth/sign-in', (req, res, next) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(401, 'invalid login');
+  }
+  const sql = `
+  select "userId",
+         "hashedPassword"
+  from   "users"
+  where  "username" = $1
+  `;
+  const params = [username];
+  db.query(sql, params)
+    .then(result => {
+      const [user] = result.rows;
+      if (!user) {
+        throw new ClientError(401, 'invalid login');
+      }
+      const { userId, hashedPassword } = user;
+      return argon2
+        .verify(hashedPassword, password)
+        .then(isMatching => {
+          if (!isMatching) {
+            throw new ClientError(401, 'invalid login');
+          }
+          const payload = { userId, username };
+          const token = jwt.sign(payload, process.env.TOKEN_SECRET);
+          res.status(200).json({ token, user: payload });
 
+        });
+    })
+    .catch(err => next(err));
+});
 
 app.get('/api/sitters', (req, res) => {
   const sql = `
@@ -154,8 +183,6 @@ app.get('/api/users/:userId', (req, res, next) => {
     .catch(err => next(err));
 });
 
-
-
 app.get('/api/pets/:petId', (req, res, next) => {
   const petId = Number(req.params.petId);
   if (!petId) {
@@ -180,25 +207,26 @@ app.get('/api/pets/:petId', (req, res, next) => {
 
 app.post('/api/sitters', (req, res, next) => {
   const {
-         userId,
-         imageUrl,
-         fullName,
-         phoneNumber,
-         streetAddress,
-         city,
-         zipCode,
-         state,
-         tagline,
-         petSpecialty,
-         service1,
-         service2,
-         service3,
-         service4,
-         service1Price,
-         service2Price,
-         service3Price,
-         service4Price,
-         aboutMe } = req.body;
+    userId,
+    imageUrl,
+    fullName,
+    phoneNumber,
+    streetAddress,
+    city,
+    zipCode,
+    state,
+    tagline,
+    petSpecialty,
+    service1,
+    service2,
+    service3,
+    service4,
+    service1Price,
+    service2Price,
+    service3Price,
+    service4Price,
+    aboutMe
+  } = req.body;
 
   const sql = `
     insert into "sitters"
@@ -266,7 +294,7 @@ app.post('/api/users/pets', (req, res, next) => {
     foodSchedule,
     bathroomRoutine,
     additionalInformation
-    } = req.body;
+  } = req.body;
 
   const sql = `
     insert into "pets"
@@ -314,7 +342,6 @@ app.post('/api/users/pets', (req, res, next) => {
     .catch(err => next(err));
 });
 
-
 app.get('/api/users/pets/:userId', (req, res, next) => {
   const userId = Number(req.params.userId);
   if (!userId) {
@@ -336,9 +363,6 @@ app.get('/api/users/pets/:userId', (req, res, next) => {
     })
     .catch(err => next(err));
 });
-
-
-
 
 app.use(errorMiddleware);
 

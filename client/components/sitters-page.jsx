@@ -19,7 +19,7 @@ export default class SittersPage extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className='container mt-3'>
         <h1 className='sitters-header raleway'>Sitters Near You</h1>
         <div className='row'>
           {

@@ -1,12 +1,15 @@
 import React from 'react';
-import SitterForm from './sitter-form';
+import AppContext from '../lib/app-context';
 
-export default function Header(props) {
-  return (
+export default class Header extends React.Component {
 
-      <nav className="navbar navbar-fluid bg-info mb-4">
+  render() {
+    const { user, handleSignOut } = this.context;
+    return (
+      <nav className="navbar navbar-fluid bg-info">
         <div className="container-fluid">
         <a className='navbar-brand nav-text' href='#'>Purrfect Sitters</a>
+
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className='navbar-toggler-icon'></span>
         </button>
@@ -21,10 +24,20 @@ export default function Header(props) {
             <li className='nav-item'>
               <a className='nav-link' aria-current='page' href="#pet-form">Pet Form</a>
             </li>
+              {user !== null &&
+                <li className='nav-item'>
+              <a className='nav-link' aria-current='page' href="#sign-in" onClick={handleSignOut}>Sign out</a>
+                </li>}
+              {user === null &&
+                <li className='nav-item'>
+                  <a className='nav-link' aria-current='page' href="#sign-in" >Sign In</a>
+                </li>}
             </ul>
         </div>
         </div>
       </nav>
-
-  );
+    );
+  }
 }
+
+Header.contextType = AppContext;
