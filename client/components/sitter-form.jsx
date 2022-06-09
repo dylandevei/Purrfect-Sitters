@@ -1,12 +1,11 @@
 import React from 'react';
-import reactDom from 'react-dom';
 import { useForm } from 'react-hook-form';
 
 export default function SitterForm() {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     const req = {
       method: 'POST',
       headers: {
@@ -14,11 +13,15 @@ export default function SitterForm() {
       },
       body: JSON.stringify(data)
     };
-    fetch(`/api/sitters`, req)
+    fetch('/api/sitters', req)
       .then(res => res.json())
-      .catch(err => next(err));
-    reset();
-      }
+      .then(() => {
+        reset();
+      })
+      .catch(err => console.error(err));
+    // eslint-disable-next-line no-console
+    console.log(errors);
+  };
 
   return (
     <div className='container-sm px-4'>
@@ -26,34 +29,34 @@ export default function SitterForm() {
       <h1 className='d-flex justify-content-center raleway'>Become a Pet Sitter</h1>
       <div className='row'>
         <div className='col'>
-          <input className='form-control mb-2' type="text" placeholder="user id" {...register("userId", { required: true })} />
+          <input className='form-control mb-2' type="text" placeholder="user id" {...register('userId', { required: true })} />
         </div>
         <div className='col'>
-          <input className='form-control mb-2' type="text" placeholder="Full Name" {...register("fullName", { required: true, min: 1 })} />
+          <input className='form-control mb-2' type="text" placeholder="Full Name" {...register('fullName', { required: true, min: 1 })} />
         </div>
         <div className='col'>
-          <input className='form-control mb-2' type="text" placeholder="Phone Number" {...register("phoneNumber", { required: true })} />
+          <input className='form-control mb-2' type="text" placeholder="Phone Number" {...register('phoneNumber', { required: true })} />
         </div>
       </div>
 
       <div className='row'>
         <div>
-          <input className='form-control mb-2' type="text" placeholder="Tagline" {...register("tagline", {})} />
+          <input className='form-control mb-2' type="text" placeholder="Tagline" {...register('tagline', {})} />
         </div>
         <div>
-          <input className='form-control mb-2' type="text" placeholder="Image Url" {...register("imageUrl", {})} />
+          <input className='form-control mb-2' type="text" placeholder="Image Url" {...register('imageUrl', {})} />
         </div>
       </div>
 
       <div className='row'>
         <div>
-          <input className='form-control mb-2' type="text" placeholder="Street Address" {...register("streetAddress", { required: true })} />
+          <input className='form-control mb-2' type="text" placeholder="Street Address" {...register('streetAddress', { required: true })} />
         </div>
         <div className='col'>
-          <input className='form-control mb-2' type="text" placeholder="City" {...register("city", { required: true })} />
+          <input className='form-control mb-2' type="text" placeholder="City" {...register('city', { required: true })} />
         </div>
         <div className='col'>
-          <select className='form-select mb-4' {...register("state", { required: true })}>
+          <select className='form-select mb-4' {...register('state', { required: true })}>
             <option defaultValue='' disabled>State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
@@ -115,13 +118,13 @@ export default function SitterForm() {
           </select>
         </div>
         <div className='col'>
-          <input className='form-control mb-1' type="text" placeholder="Zip Code" {...register("zipCode", { required: true })} />
+          <input className='form-control mb-1' type="text" placeholder="Zip Code" {...register('zipCode', { required: true })} />
         </div>
       </div>
       <div className='row'>
         <h1 className='d-flex justify-content-center raleway'>Services</h1>
         <div className='col'>
-          <select className='form-select mb-1' {...register("service1", { required: true })}>
+          <select className='form-select mb-1' {...register('service1', { required: true })}>
               <option defaultValue=''>-Select a Service-</option>
             <option value="Boarding">Boarding</option>
             <option value="House Sitting"> House Sitting</option>
@@ -135,13 +138,13 @@ export default function SitterForm() {
           </select>
         </div>
         <div className='col'>
-          <input className='form-control' type="text" placeholder="Price for Service" {...register("service1Price", { required: true })} />
+          <input className='form-control' type="text" placeholder="Price for Service" {...register('service1Price', { required: true })} />
         </div>
       </div>
 
       <div className='row'>
         <div className='col'>
-          <select className='form-select mb-1'{...register("service2", { required: true })}>
+          <select className='form-select mb-1'{...register('service2', { required: true })}>
               <option defaultValue=''>-Select a Service-</option>
             <option value="Boarding">Boarding</option>
             <option value="House Sitting"> House Sitting</option>
@@ -155,13 +158,13 @@ export default function SitterForm() {
           </select>
         </div>
         <div className='col'>
-          <input className='form-control' type="text" placeholder="Price for Service" {...register("service2Price", { required: true })} />
+          <input className='form-control' type="text" placeholder="Price for Service" {...register('service2Price', { required: true })} />
         </div>
       </div>
 
       <div className='row'>
         <div className='col'>
-          <select className='form-select mb-1'{...register("service3", { required: true })}>
+          <select className='form-select mb-1'{...register('service3', { required: true })}>
               <option defaultValue=''>-Select a Service-</option>
             <option value="Boarding">Boarding</option>
             <option value=" House Sitting"> House Sitting</option>
@@ -175,13 +178,13 @@ export default function SitterForm() {
           </select>
         </div>
         <div className='col'>
-          <input className='form-control' type="text" placeholder="Price for Service" {...register("service3Price", { required: true })} />
+          <input className='form-control' type="text" placeholder="Price for Service" {...register('service3Price', { required: true })} />
         </div>
       </div>
 
       <div className='row'>
         <div className='col'>
-          <select className='form-select' {...register("service4", { required: true })}>
+          <select className='form-select' {...register('service4', { required: true })}>
               <option defaultValue=''>-Select a Service-</option>
             <option value="Boarding">Boarding</option>
             <option value="House Sitting"> House Sitting</option>
@@ -195,13 +198,13 @@ export default function SitterForm() {
           </select>
         </div>
         <div className='col'>
-          <input className='form-control mb-4' type="text" placeholder="Price for Service" {...register("service4Price", { required: true })} />
+          <input className='form-control mb-4' type="text" placeholder="Price for Service" {...register('service4Price', { required: true })} />
         </div>
       </div>
 
       <div className='row'>
         <div className='d-flex justify-content-center mb-4'>
-          <select className='form-select' {...register("petSpecialty", { required: true })}>
+          <select className='form-select' {...register('petSpecialty', { required: true })}>
               <option defaultValue=''>-Animal Specialty-</option>
             <option value="Cat">Cat</option>
             <option value="Dog">Dog</option>
@@ -210,7 +213,7 @@ export default function SitterForm() {
         </div>
       </div>
 
-      <textarea className='form-control mb-2' placeholder='Tell us about yourself!' {...register("aboutMe", { required: true })} />
+      <textarea className='form-control mb-2' placeholder='Tell us about yourself!' {...register('aboutMe', { required: true })} />
       <div className='d-grid gap-2'>
         <input type="submit" className='btn btn-primary mb-5' />
       </div>
