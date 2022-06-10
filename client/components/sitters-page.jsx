@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default class SittersPage extends React.Component {
   constructor(props) {
     super(props);
@@ -13,15 +12,16 @@ export default class SittersPage extends React.Component {
     fetch('/api/sitters')
       .then(res => res.json())
       .then(users => this.setState(prevState => ({
-        users: users
+        users
       })));
   }
 
   render() {
     return (
-      <div className='container mt-3'>
-        <h1 className='sitters-header raleway'>Sitters Near You</h1>
+      <div className='container custom-container card shadow-lg mt-5'>
         <div className='row'>
+          <h1 className='sitters-header raleway mt-3'>Sitters Near You</h1>
+          <div className='col'>
           {
             this.state.users.map(user => (
               <div key={user.userId}>
@@ -29,6 +29,7 @@ export default class SittersPage extends React.Component {
               </div>
             ))
           }
+          </div>
         </div>
       </div>
     );
@@ -36,13 +37,8 @@ export default class SittersPage extends React.Component {
 }
 
 function User(props) {
-  const {
-    userId, fullName, imageUrl, aboutMe, tagline, state, city, streetAddress, zipCode, service1, service2, service3,
-    service4, service1Price, service2Price, service3Price, service4Price
-  } = props.user;
-
-  const cityState = `${city}, ${state}`
-  const services = `Offers the following services: ${service1}, ${service2}, ${service3}, ${service4}`
+  const { userId, fullName, imageUrl, tagline, city, service1, service2, service3, service4 } = props.user;
+  const services = `Offers the following services: ${service1}, ${service2}, ${service3}, ${service4}`;
   return (
     <>
     <div className="container-md">

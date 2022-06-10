@@ -24,17 +24,39 @@
 
 
 .nav-text {
-  font-family: Raleway, sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .lato {
-  font-family: Lato, sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .raleway {
-  font-family: Raleway, sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
-/* #root {
+#root {
   background-color: #e1f6f4;
-} */
+  height: 100%;
+}
+
+.customNav{
+  background-color: #6AC1B8;
+}
+
+.custom-button{
+  background-color: #6AC1B8;
+  border: none;
+  width: 100%;
+  padding: 2%;
+  border-radius: 12px;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+}
+
+
+.custom-container{
+  background-color: white;
+  height: 100%;
+}

@@ -139,6 +139,51 @@ app.get('/api/pets', (req, res) => {
     });
 });
 
+app.get('/api/sitters/pets/', (req, res) => {
+  const sql = `
+    select *
+      from "sitters"
+      join "pets" using ("userId")
+  `;
+
+  const params = sql.body;
+
+  db.query(sql, params)
+    .then(result => {
+      const users = result.rows;
+      res.status(200).json(users);
+    }
+    )
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an error occured.'
+      });
+    });
+});
+
+app.get('/api/sitters/pets/:userId', (req, res, next) => {
+  const userId = Number(req.params.userId);
+  if (!userId) {
+    throw new ClientError(400, 'userId must be a positive integer');
+  }
+  const sql = `
+    select *
+      from "sitters"
+      join "pets" using ("userId")
+     where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(404, `cannot find product with userId ${userId}`);
+      }
+      res.json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 app.get('/api/sitters/:userId', (req, res, next) => {
   const userId = Number(req.params.userId);
   if (!userId) {
@@ -146,7 +191,6 @@ app.get('/api/sitters/:userId', (req, res, next) => {
   }
   const sql = `
     select *
-
       from "sitters"
      where "userId" = $1
   `;
@@ -199,6 +243,27 @@ app.get('/api/pets/:petId', (req, res, next) => {
     .then(result => {
       if (!result.rows[0]) {
         throw new ClientError(404, `cannot find product with userId ${petId}`);
+      }
+      res.json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
+app.get('/api/pets/:userId', (req, res, next) => {
+  const userId = Number(req.params.userId);
+  if (!userId) {
+    throw new ClientError(400, 'userId must be a positive integer');
+  }
+  const sql = `
+    select *
+      from "pets"
+     where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        throw new ClientError(404, `cannot find product with userId ${userId}`);
       }
       res.json(result.rows[0]);
     })

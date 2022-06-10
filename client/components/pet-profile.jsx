@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AppContext from '../lib/app-context';
 
 export default class PetProfile extends React.Component {
   constructor(props) {
@@ -18,24 +18,23 @@ export default class PetProfile extends React.Component {
   render() {
     if (!this.state.pet) return null;
     const {
-      userId,
       petName, petType, spayedNeutered, weight, vetContact, imageUrl, friendlyWithAnimals, friendlyWithChildren,
       additionalInformation, age, bathroomRoutine, breed, favoriteToy, foodSchedule, foodType, sex
     } = this.state.pet;
 
-    let formatPhoneNumber = (str) => {
-      let cleaned = ('' + str).replace(/\D/g, '');
-      let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    const formatPhoneNumber = str => {
+      const cleaned = ('' + str).replace(/\D/g, '');
+      const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
       if (match) {
-        return '(' + match[1] + ')' + match[2] + '-' + match[3]
-      };
-      return null
+        return '(' + match[1] + ')' + match[2] + '-' + match[3];
+      }
+      return null;
     };
-    let phoneNumber = formatPhoneNumber(vetContact);
+    const phoneNumber = formatPhoneNumber(vetContact);
     return (
       <div className="container">
         <div className='row'>
-        <div className="card shadow-lg">
+        <div className="card mt-5 shadow-lg">
           <div className="card-body mb-5">
             <div className='text-center'>
               <h2 className='display-1 raleway'>{petName}</h2>
@@ -57,9 +56,11 @@ export default class PetProfile extends React.Component {
                 </div>
               </div>
                 <div className="col col-12 col-sm-6 col-md-7 lato text-center">
-                  <h4 className='raleway text-center'>{petName}'s Food Routine</h4>
+                  <h4 className='raleway text-center'>{petName}&apos;s Food Type</h4>
+                  <p>{foodType}</p>
+                  <h4 className='raleway text-center'>{petName}&apos;s Food Routine</h4>
                   <p>{foodSchedule}</p>
-                  <h4 className='raleway text-center'>{petName}'s Bathroom Routine</h4>
+                  <h4 className='raleway text-center'>{petName}&apos;s Bathroom Routine</h4>
                   <p>{bathroomRoutine}</p>
                   <h4 className='raleway text-center'>About {petName}</h4>
                   <p>{additionalInformation}</p>
@@ -73,3 +74,5 @@ export default class PetProfile extends React.Component {
     );
   }
 }
+
+PetProfile.contextType = AppContext;

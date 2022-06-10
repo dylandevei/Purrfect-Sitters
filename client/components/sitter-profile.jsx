@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AppContext from '../lib/app-context';
 
 export default class SitterProfile extends React.Component {
   constructor(props) {
@@ -18,7 +18,6 @@ export default class SitterProfile extends React.Component {
   render() {
     if (!this.state.user) return null;
     const {
-      petId,
       fullName, imageUrl, aboutMe, tagline, state, city, streetAddress, zipCode, service1, service2, service3,
       service4, service1Price, service2Price, service3Price, service4Price
     } = this.state.user;
@@ -29,17 +28,17 @@ export default class SitterProfile extends React.Component {
           <img className='img-fluid' src={`https://maps.googleapis.com/maps/api/staticmap?center=${fullAddress}&zoom=12&size=400x400&key=AIzaSyAzbDQcSZrp68VfTmGRTe9zngrVoTQAjeo`} />
         </div>
       );
-    }
+    };
     return (
-      <div className="container">
-        <div className="card shadow-lg">
+      <div className="container d-flex">
+        <div className="card mt-5 shadow-lg">
           <div className="card-body">
             <h2 className='raleway profile-header'>{fullName}</h2>
             <h5 className="text-secondary lato profile-tagline mb-5">{tagline}</h5>
             <div className="row mb-4">
               <div className="col-12 col-sm-6 col-md-5">
               <img className='img-fluid rounded mx-auto d-block mb-5' src={imageUrl} alt={fullName} />
-                <a href={`#pets?petId=${petId}`}>pet</a>
+                <a className=' d-flex justify-content-center' href={`#pets?petId=${this.context.user.userId}`}>pet</a>
                 <table className="table text-center mb-3 lato">
                   <thead className='raleway fs-4'>
                     <tr>
@@ -80,3 +79,5 @@ export default class SitterProfile extends React.Component {
     );
   }
 }
+
+SitterProfile.contextType = AppContext;
