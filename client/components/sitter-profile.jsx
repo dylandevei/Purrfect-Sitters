@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default class SitterProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,7 @@ export default class SitterProfile extends React.Component {
           <img className='img-fluid' src={`https://maps.googleapis.com/maps/api/staticmap?center=${fullAddress}&zoom=12&size=400x400&key=AIzaSyAzbDQcSZrp68VfTmGRTe9zngrVoTQAjeo`} />
         </div>
       );
-    }
+    };
     return (
       <div className="container">
         <div className="card shadow-lg">

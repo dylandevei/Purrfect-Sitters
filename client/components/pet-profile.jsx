@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default class PetProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -23,15 +22,15 @@ export default class PetProfile extends React.Component {
       additionalInformation, age, bathroomRoutine, breed, favoriteToy, foodSchedule, foodType, sex
     } = this.state.pet;
 
-    let formatPhoneNumber = (str) => {
-      let cleaned = ('' + str).replace(/\D/g, '');
-      let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    const formatPhoneNumber = str => {
+      const cleaned = ('' + str).replace(/\D/g, '');
+      const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
       if (match) {
-        return '(' + match[1] + ')' + match[2] + '-' + match[3]
-      };
-      return null
+        return '(' + match[1] + ')' + match[2] + '-' + match[3];
+      }
+      return null;
     };
-    let phoneNumber = formatPhoneNumber(vetContact);
+    const phoneNumber = formatPhoneNumber(vetContact);
     return (
       <div className="container">
         <div className='row'>
@@ -57,9 +56,9 @@ export default class PetProfile extends React.Component {
                 </div>
               </div>
                 <div className="col col-12 col-sm-6 col-md-7 lato text-center">
-                  <h4 className='raleway text-center'>{petName}'s Food Routine</h4>
+                  <h4 className='raleway text-center'>{petName}&apos;s Food Routine</h4>
                   <p>{foodSchedule}</p>
-                  <h4 className='raleway text-center'>{petName}'s Bathroom Routine</h4>
+                  <h4 className='raleway text-center'>{petName}&apos;s Bathroom Routine</h4>
                   <p>{bathroomRoutine}</p>
                   <h4 className='raleway text-center'>About {petName}</h4>
                   <p>{additionalInformation}</p>

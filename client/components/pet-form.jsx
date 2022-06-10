@@ -25,7 +25,8 @@ export default function PetForm() {
   };
 
   return (
-    <div className='container-sm px-4'>
+
+    <div className='container-sm px-4 mt-5'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className='d-flex justify-content-center raleway'>Create A New Pet Profile</h1>
         <div className='row'>

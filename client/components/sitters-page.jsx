@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default class SittersPage extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +12,7 @@ export default class SittersPage extends React.Component {
     fetch('/api/sitters')
       .then(res => res.json())
       .then(users => this.setState(prevState => ({
-        users: users
+        users
       })));
   }
 
@@ -36,13 +35,8 @@ export default class SittersPage extends React.Component {
 }
 
 function User(props) {
-  const {
-    userId, fullName, imageUrl, aboutMe, tagline, state, city, streetAddress, zipCode, service1, service2, service3,
-    service4, service1Price, service2Price, service3Price, service4Price
-  } = props.user;
-
-  const cityState = `${city}, ${state}`
-  const services = `Offers the following services: ${service1}, ${service2}, ${service3}, ${service4}`
+  const { userId, fullName, imageUrl, tagline, city, service1, service2, service3, service4 } = props.user;
+  const services = `Offers the following services: ${service1}, ${service2}, ${service3}, ${service4}`;
   return (
     <>
     <div className="container-md">

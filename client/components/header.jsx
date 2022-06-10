@@ -21,9 +21,9 @@ export default class Header extends React.Component {
             <li className='nav-item'>
               <a className='nav-link' aria-current='page' href="#sitter-form">Sitter Form</a>
             </li>
-            <li className='nav-item'>
-              <a className='nav-link' aria-current='page' href="#pet-form">Pet Form</a>
-            </li>
+              <li className='nav-item'>
+                <a className='nav-link' aria-current='page' href="#my-account">My Account</a>
+              </li>
               {user !== null &&
                 <li className='nav-item'>
               <a className='nav-link' aria-current='page' href="#sign-in" onClick={handleSignOut}>Sign out</a>

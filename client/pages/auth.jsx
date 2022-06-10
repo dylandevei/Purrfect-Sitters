@@ -17,12 +17,12 @@ export default class AuthPage extends React.Component {
     return (
       <div className="row pt-5 align-items-center">
         <div className="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-xl-4 offset-xl-4">
-          <header className="text-center">
+          <header className="text-center raleway">
             <h2 className="mb-2">
-              <i className="fas fa-bolt me-2" />
+              <i className="fas me-2" />
               Purrfect Sitters
             </h2>
-            <p className="text-muted mb-4">{welcomeMessage}</p>
+            <p className="text-muted mb-4 lato">{welcomeMessage}</p>
           </header>
           <div className="card p-3 ">
             <AuthForm
