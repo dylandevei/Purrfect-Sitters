@@ -9,13 +9,13 @@ export default class AuthPage extends React.Component {
 
     const { user, route, handleSignIn } = this.context;
 
-    if (user) return <Redirect to="" />;
+    if (user) return <Redirect to="my-account" />;
 
     const welcomeMessage = route.path === 'sign-in'
       ? 'Please sign in to continue'
       : 'Create an account to get started!';
     return (
-      <div className="row pt-5 align-items-center">
+      <div className="row pt-5 align-items-center custom-container">
         <div className="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-xl-4 offset-xl-4">
           <header className="text-center raleway">
             <h2 className="mb-2">

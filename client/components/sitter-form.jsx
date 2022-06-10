@@ -215,7 +215,7 @@ export default function SitterForm() {
 
       <textarea className='form-control mb-2' placeholder='Tell us about yourself!' {...register('aboutMe', { required: true })} />
       <div className='d-grid gap-2'>
-        <input type="submit" className='btn btn-primary mb-5' />
+        <input type="submit" className='custom-button mb-5' />
       </div>
 
     </form>

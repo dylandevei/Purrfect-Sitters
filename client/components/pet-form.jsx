@@ -119,7 +119,7 @@ export default function PetForm() {
         <textarea className='form-control mb-2' placeholder="Tell Us About Your Pet and Any Useful Information" {...register('additionalInformation', { required: true })} />
 
       <div className='d-grid gap-2'>
-        <input className='btn btn-primary mb-5' type="submit" />
+          <input className='custom-button mb-5' type="submit" />
       </div>
 
       </form>

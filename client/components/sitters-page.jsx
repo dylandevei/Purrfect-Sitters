@@ -18,9 +18,10 @@ export default class SittersPage extends React.Component {
 
   render() {
     return (
-      <div className='container mt-3'>
-        <h1 className='sitters-header raleway'>Sitters Near You</h1>
+      <div className='container custom-container card shadow-lg mt-5'>
         <div className='row'>
+          <h1 className='sitters-header raleway mt-3'>Sitters Near You</h1>
+          <div className='col'>
           {
             this.state.users.map(user => (
               <div key={user.userId}>
@@ -28,6 +29,7 @@ export default class SittersPage extends React.Component {
               </div>
             ))
           }
+          </div>
         </div>
       </div>
     );

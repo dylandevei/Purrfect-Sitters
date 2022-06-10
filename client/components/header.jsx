@@ -6,7 +6,7 @@ export default class Header extends React.Component {
   render() {
     const { user, handleSignOut } = this.context;
     return (
-      <nav className="navbar navbar-fluid bg-info">
+      <nav className="navbar navbar-fluid customNav">
         <div className="container-fluid">
         <a className='navbar-brand nav-text' href='#'>Purrfect Sitters</a>
 
