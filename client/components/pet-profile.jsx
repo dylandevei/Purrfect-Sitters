@@ -9,7 +9,7 @@ export default class PetProfile extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/pets/${this.props.petId}`)
+    fetch(`/api/users/pets/${this.props.petId}`)
       .then(res => res.json())
       .then(pet => this.setState({ pet }));
   }
@@ -17,7 +17,6 @@ export default class PetProfile extends React.Component {
   render() {
     if (!this.state.pet) return null;
     const {
-      userId,
       petName, petType, spayedNeutered, weight, vetContact, imageUrl, friendlyWithAnimals, friendlyWithChildren,
       additionalInformation, age, bathroomRoutine, breed, favoriteToy, foodSchedule, foodType, sex
     } = this.state.pet;
@@ -34,7 +33,7 @@ export default class PetProfile extends React.Component {
     return (
       <div className="container">
         <div className='row'>
-        <div className="card shadow-lg">
+        <div className="card mt-5 shadow-lg">
           <div className="card-body mb-5">
             <div className='text-center'>
               <h2 className='display-1 raleway'>{petName}</h2>
@@ -56,6 +55,8 @@ export default class PetProfile extends React.Component {
                 </div>
               </div>
                 <div className="col col-12 col-sm-6 col-md-7 lato text-center">
+                  <h4 className='raleway text-center'>{petName}&apos;s Food Type</h4>
+                  <p>{foodType}</p>
                   <h4 className='raleway text-center'>{petName}&apos;s Food Routine</h4>
                   <p>{foodSchedule}</p>
                   <h4 className='raleway text-center'>{petName}&apos;s Bathroom Routine</h4>

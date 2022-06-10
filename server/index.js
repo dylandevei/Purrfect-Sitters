@@ -139,6 +139,29 @@ app.get('/api/pets', (req, res) => {
     });
 });
 
+app.get('/api/sitters/pets/', (req, res) => {
+  const sql = `
+    select *
+      from "sitters"
+      join "pets" using ("userId")
+  `;
+
+  const params = sql.body;
+
+  db.query(sql, params)
+    .then(result => {
+      const users = result.rows;
+      res.status(200).json(users);
+    }
+    )
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an error occured.'
+      });
+    });
+});
+
 app.get('/api/sitters/:userId', (req, res, next) => {
   const userId = Number(req.params.userId);
   if (!userId) {
@@ -146,7 +169,6 @@ app.get('/api/sitters/:userId', (req, res, next) => {
   }
   const sql = `
     select *
-
       from "sitters"
      where "userId" = $1
   `;
