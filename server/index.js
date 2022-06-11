@@ -139,28 +139,28 @@ app.get('/api/pets', (req, res) => {
     });
 });
 
-app.get('/api/sitters/pets/', (req, res) => {
-  const sql = `
-    select *
-      from "sitters"
-      join "pets" using ("userId")
-  `;
+// app.get('/api/sitters/pets/', (req, res) => {
+//   const sql = `
+//     select *
+//       from "sitters"
+//       join "pets" using ("userId")
+//   `;
 
-  const params = sql.body;
+//   const params = sql.body;
 
-  db.query(sql, params)
-    .then(result => {
-      const users = result.rows;
-      res.status(200).json(users);
-    }
-    )
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'an error occured.'
-      });
-    });
-});
+//   db.query(sql, params)
+//     .then(result => {
+//       const users = result.rows;
+//       res.status(200).json(users);
+//     }
+//     )
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).json({
+//         error: 'an error occured.'
+//       });
+//     });
+// });
 
 app.get('/api/sitters/pets/:userId', (req, res, next) => {
   const userId = Number(req.params.userId);
@@ -249,7 +249,7 @@ app.get('/api/pets/:petId', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/pets/:userId', (req, res, next) => {
+app.get('/api/users/pets/:userId', (req, res, next) => {
   const userId = Number(req.params.userId);
   if (!userId) {
     throw new ClientError(400, 'userId must be a positive integer');
@@ -262,10 +262,7 @@ app.get('/api/pets/:userId', (req, res, next) => {
   const params = [userId];
   db.query(sql, params)
     .then(result => {
-      if (!result.rows[0]) {
-        throw new ClientError(404, `cannot find product with userId ${userId}`);
-      }
-      res.json(result.rows[0]);
+      res.json(result.rows);
     })
     .catch(err => next(err));
 });
@@ -414,8 +411,8 @@ app.get('/api/users/pets/:userId', (req, res, next) => {
   }
   const sql = `
     select *
-      from "users"
-      join "pets" using ("userId")
+      from "pets"
+
      where "userId" = $1
   `;
   const params = [userId];
