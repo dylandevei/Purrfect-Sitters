@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
+const authorizationMiddleware = require('./authorization-middleware');
 
 const app = express();
 const publicPath = path.join(__dirname, 'public');
@@ -244,9 +245,11 @@ app.get('/api/users/pets/:userId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.use(authorizationMiddleware);
+
 app.post('/api/sitters', (req, res, next) => {
+  const { userId } = req.user;
   const {
-    userId,
     imageUrl,
     fullName,
     phoneNumber,
@@ -315,8 +318,8 @@ app.post('/api/sitters', (req, res, next) => {
 });
 
 app.post('/api/users/pets', (req, res, next) => {
+  const { userId } = req.user;
   const {
-    userId,
     imageUrl,
     petType,
     petName,

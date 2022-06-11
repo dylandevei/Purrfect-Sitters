@@ -6,11 +6,12 @@ export default function PetForm() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = data => {
-
+    const token = window.localStorage.getItem('react-context-jwt');
     const req = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-Access-Token': token
       },
       body: JSON.stringify(data)
     };
@@ -30,9 +31,6 @@ export default function PetForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className='d-flex justify-content-center raleway'>Create A New Pet Profile</h1>
         <div className='row'>
-          <div className='col'>
-            <input className='form-control mb-2' type="text" placeholder="User Id" {...register('userId', { required: true })} />
-          </div>
           <div className='col'>
             <input className='form-control mb-2' type="text" placeholder="Image Url" {...register('imageUrl', { required: true })} />
           </div>
