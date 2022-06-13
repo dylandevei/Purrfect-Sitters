@@ -221,7 +221,7 @@ app.get('/api/pets/:petId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (!result.rows[0]) {
-        throw new ClientError(404, `cannot find product with userId ${petId}`);
+        throw new ClientError(404, `cannot find pet with petId ${petId}`);
       }
       res.json(result.rows[0]);
     })
