@@ -1,5 +1,6 @@
 import React from 'react';
 import AppContext from '../lib/app-context';
+import { formatPhoneNumber } from '../lib';
 
 export default class PetProfile extends React.Component {
   constructor(props) {
@@ -22,15 +23,6 @@ export default class PetProfile extends React.Component {
       additionalInformation, age, bathroomRoutine, breed, favoriteToy, foodSchedule, foodType, sex
     } = this.state.pet;
 
-    const formatPhoneNumber = str => {
-      const cleaned = ('' + str).replace(/\D/g, '');
-      const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-      if (match) {
-        return '(' + match[1] + ')' + match[2] + '-' + match[3];
-      }
-      return null;
-    };
-    const phoneNumber = formatPhoneNumber(vetContact);
     return (
       <div className="container">
         <div className='row'>
@@ -45,7 +37,7 @@ export default class PetProfile extends React.Component {
                 <div className="col">
                 <img className='img-fluid rounded mx-auto d-block mb-5' src={imageUrl} alt={petName} />
                   <div className='lato col-12 col-sm-6 col-md-7 text-center mx-auto'>
-                  <p>Vet Contact: {phoneNumber}</p>
+                  <p>Vet Contact: {formatPhoneNumber(vetContact)}</p>
                   <p>Age: {age}</p>
                   <p>Weight: {weight}</p>
                   <p>Sex: {sex}</p>

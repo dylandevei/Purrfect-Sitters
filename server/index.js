@@ -8,6 +8,7 @@ const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const authorizationMiddleware = require('./authorization-middleware');
+const uploadsMiddleware = require('./uploads-middleware');
 
 const app = express();
 const publicPath = path.join(__dirname, 'public');
@@ -15,9 +16,9 @@ const publicPath = path.join(__dirname, 'public');
 if (process.env.NODE_ENV === 'development') {
   app.use(require('./dev-middleware')(publicPath));
 }
-
-app.use(staticMiddleware);
+app.use(express.static(publicPath));
 app.use(express.json());
+app.use(staticMiddleware);
 
 app.post('/api/auth/sign-up', (req, res, next) => {
   const { username, password } = req.body;
@@ -317,7 +318,7 @@ app.post('/api/sitters', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.post('/api/users/pets', (req, res, next) => {
+app.post('/api/users/pets', uploadsMiddleware, (req, res, next) => {
   const { userId } = req.user;
   const {
     imageUrl,

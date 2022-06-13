@@ -65,3 +65,7 @@
     height: 10rem;
     overflow-y: scroll;
 }
+
+.hidden{
+  display: none;
+}
