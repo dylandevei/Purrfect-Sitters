@@ -28,7 +28,7 @@ export default class SitterProfile extends React.Component {
     const Map = () => {
       return (
         <div>
-          <img className='img-fluid' src={`https://maps.googleapis.com/maps/api/staticmap?center=${fullAddress}&zoom=12&size=400x400&key=AIzaSyAzbDQcSZrp68VfTmGRTe9zngrVoTQAjeo`} />
+          <img className='img-fluid' src={`https://maps.googleapis.com/maps/api/staticmap?center=${fullAddress}&zoom=12&size=400x400&key=AIzaSyAzbDQcSZrp68VfTmGRTe9zngrVoTQAjeo`}s />
         </div>
       );
     };
