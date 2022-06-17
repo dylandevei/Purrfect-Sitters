@@ -6,10 +6,12 @@ export default function SitterForm() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = data => {
+    const token = window.localStorage.getItem('react-context-jwt');
     const req = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-Access-Token': token
       },
       body: JSON.stringify(data)
     };
@@ -28,9 +30,6 @@ export default function SitterForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1 className='d-flex justify-content-center raleway'>Become a Pet Sitter</h1>
       <div className='row'>
-        <div className='col'>
-          <input className='form-control mb-2' type="text" placeholder="user id" {...register('userId', { required: true })} />
-        </div>
         <div className='col'>
           <input className='form-control mb-2' type="text" placeholder="Full Name" {...register('fullName', { required: true, min: 1 })} />
         </div>

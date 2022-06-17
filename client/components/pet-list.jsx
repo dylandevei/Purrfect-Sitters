@@ -1,5 +1,4 @@
 import React from 'react';
-import AppContext from '../lib/app-context';
 
 export default class PetList extends React.Component {
   constructor(props) {
@@ -72,5 +71,3 @@ function Pet(props) {
 
   );
 }
-
-PetList.contextType = AppContext;

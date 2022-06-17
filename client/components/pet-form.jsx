@@ -3,14 +3,18 @@ import { useForm } from 'react-hook-form';
 
 export default function PetForm() {
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { isSubmitSuccessful, errors } } = useForm();
 
   const onSubmit = data => {
 
+    const token = window.localStorage.getItem('react-context-jwt');
+    const formData = new FormData();
+    formData.append('image', data.imageUrl[0]);
     const req = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': formData,
+        'X-Access-Token': token
       },
       body: JSON.stringify(data)
     };
@@ -24,17 +28,17 @@ export default function PetForm() {
     console.log(errors);
   };
 
-  return (
+  if (isSubmitSuccessful === true) {
+    window.location.hash = '#';
+  }
 
+  return (
     <div className='container-sm px-4 mt-5'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className='d-flex justify-content-center raleway'>Create A New Pet Profile</h1>
         <div className='row'>
           <div className='col'>
-            <input className='form-control mb-2' type="text" placeholder="User Id" {...register('userId', { required: true })} />
-          </div>
-          <div className='col'>
-            <input className='form-control mb-2' type="text" placeholder="Image Url" {...register('imageUrl', { required: true })} />
+            <input className='form-control mb-2' type="file" {...register('imageUrl', { required: true })} />
           </div>
         </div>
 
@@ -104,7 +108,7 @@ export default function PetForm() {
 
       <div className='row'>
         <div className='col'>
-          <input className='form-control mb-2' type="text" placeholder="Vet Contact Phone Number" {...register('vetContact', { required: true })} />
+            <input className='form-control mb-2' type="tel" placeholder="Vet Contact Phone Number" {...register('vetContact', { required: true })} />
        </div>
       </div>
 

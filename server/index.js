@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
+const authorizationMiddleware = require('./authorization-middleware');
+const uploadsMiddleware = require('./uploads-middleware');
 
 const app = express();
 const publicPath = path.join(__dirname, 'public');
@@ -14,9 +16,9 @@ const publicPath = path.join(__dirname, 'public');
 if (process.env.NODE_ENV === 'development') {
   app.use(require('./dev-middleware')(publicPath));
 }
-
-app.use(staticMiddleware);
+app.use(express.static(publicPath));
 app.use(express.json());
+app.use(staticMiddleware);
 
 app.post('/api/auth/sign-up', (req, res, next) => {
   const { username, password } = req.body;
@@ -219,7 +221,7 @@ app.get('/api/pets/:petId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (!result.rows[0]) {
-        throw new ClientError(404, `cannot find product with userId ${petId}`);
+        throw new ClientError(404, `cannot find pet with petId ${petId}`);
       }
       res.json(result.rows[0]);
     })
@@ -244,9 +246,11 @@ app.get('/api/users/pets/:userId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.use(authorizationMiddleware);
+
 app.post('/api/sitters', (req, res, next) => {
+  const { userId } = req.user;
   const {
-    userId,
     imageUrl,
     fullName,
     phoneNumber,
@@ -314,10 +318,10 @@ app.post('/api/sitters', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.post('/api/users/pets', (req, res, next) => {
+app.post('/api/users/pets', uploadsMiddleware, (req, res, next) => {
+  const { userId } = req.user;
+  const imageUrl = `/images/${req.file.filename}`;
   const {
-    userId,
-    imageUrl,
     petType,
     petName,
     weight,

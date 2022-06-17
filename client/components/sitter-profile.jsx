@@ -1,6 +1,7 @@
 import React from 'react';
 import AppContext from '../lib/app-context';
 import PetList from './pet-list';
+import { formatPhoneNumber } from '../lib';
 
 export default class SitterProfile extends React.Component {
   constructor(props) {
@@ -18,15 +19,16 @@ export default class SitterProfile extends React.Component {
 
   render() {
     if (!this.state.user) return null;
+
     const {
       fullName, imageUrl, aboutMe, tagline, state, city, streetAddress, zipCode, service1, service2, service3,
-      service4, service1Price, service2Price, service3Price, service4Price
+      service4, service1Price, service2Price, service3Price, service4Price, phoneNumber
     } = this.state.user;
     const fullAddress = `${streetAddress}, ${zipCode}, ${state}`;
     const Map = () => {
       return (
         <div>
-          <img className='img-fluid' src={`https://maps.googleapis.com/maps/api/staticmap?center=${fullAddress}&zoom=12&size=400x400&key=AIzaSyAzbDQcSZrp68VfTmGRTe9zngrVoTQAjeo`} />
+          <img className='img-fluid' src={`https://maps.googleapis.com/maps/api/staticmap?center=${fullAddress}&zoom=12&size=400x400&key=${process.env.REACT_APP_API_KEY}`} />
         </div>
       );
     };
@@ -70,7 +72,7 @@ export default class SitterProfile extends React.Component {
               <div className="col-12 col-sm-6 col-md-7 lato text-center">
                 <h4 className='raleway text-center'>About {fullName}</h4>
                 <p>{aboutMe}</p>
-
+                <p className='lato text-center'><span className='fs-5'>Phone Number:</span> {formatPhoneNumber(phoneNumber)}</p>
                 <p className='lato text-center'><span className='fs-5'>Location:</span> {city}, {state}</p>
                 <Map/>
               </div>
