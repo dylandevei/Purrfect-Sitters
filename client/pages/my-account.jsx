@@ -8,7 +8,8 @@ export default class MyAccount extends React.Component {
   render() {
     if (!this.context.user) return <Redirect to="sign-in" />;
 
-    return (
+    if (this.context.user) {
+      return (
       <div className="container custom-container card shadow-lg mt-5 px-5">
         <div className="row">
           <div className="col">
@@ -26,7 +27,8 @@ export default class MyAccount extends React.Component {
         </div>
       </div>
 
-    );
+      );
+    }
   }
 }
 
