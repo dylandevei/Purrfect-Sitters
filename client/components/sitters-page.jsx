@@ -17,7 +17,8 @@ export default class SittersPage extends React.Component {
   }
 
   render() {
-    return (
+    if (this.state.users !== null) {
+      return (
       <div className='container custom-container card shadow-lg mt-5'>
         <div className='row'>
           <h1 className='sitters-header raleway mt-3'>Sitters Near You</h1>
@@ -32,7 +33,11 @@ export default class SittersPage extends React.Component {
           </div>
         </div>
       </div>
-    );
+      );
+    }
+    <div className="spinner-border" role="status">
+      <span className="sr-only"></span>
+    </div>;
   }
 }
 
