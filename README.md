@@ -5,7 +5,7 @@ A Full-Stack  application for pet owners to find and become pet sitters in their
 
 ## Technologies Used
 
-- Postgresql
+- PostgreSQL
 - Express
 - argon2
 - Json Web Token
@@ -22,26 +22,38 @@ Try the application live at [[https://purrfect-sitters.herokuapp.com/)](https://
 
 ## Features
 
-- Users can view details of a single random TV show or Movie
-- User can add a TV show or movie to watchlist
-- Users can view their watchlist.
-- Users can view a list of top movies in theaters now.
-- Users can delete their watchlist entries.
+- Users can register for an account
+- User Can create a Pet Profile
+- User Can create a Sitter Profile
+- Users can view a list of Sitter profiles
+- Users can view a list of pet profiles on individual Sitter Profiles
+- User can sign in
+- User can sign out
+- User can view their account page
+- User can view list of pet profiles they have created 
+
 
 ## Stretch Features
 
-- Implement a feature to review movies/tv shows you have watched
-- Implement a feature to view friend's watchlists. 
+-Users can real-time chat with each other (socket.io)
+-Users can update their profiles
+-Users can delete their profiles (pet profile or stop becoming a sitter)  
+-Users can search sitters by location
+
 
 
 ## Preview
 
 
-https://user-images.githubusercontent.com/99229316/178055778-af4cc01f-e255-4dd4-bef3-7c2f29d26928.mov
 
-https://user-images.githubusercontent.com/99229316/178056016-9b095fc0-0a9c-4bcf-913c-e08f08e5908f.mov
 
-https://user-images.githubusercontent.com/99229316/178055868-a35a5887-a93b-414c-ad1e-1825238edfbc.mov
+https://user-images.githubusercontent.com/99229316/182492637-7fce1d40-505d-46b5-b405-57bdb339ad71.mov
+
+
+
+https://user-images.githubusercontent.com/99229316/182493888-2bd1d190-df63-4325-95ca-16122825090e.mov
+
+
 
 ## Getting Started 
 
