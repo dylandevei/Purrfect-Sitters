@@ -6,14 +6,11 @@ export default function PetForm() {
   const { register, handleSubmit, reset, formState: { isSubmitSuccessful, errors } } = useForm();
 
   const onSubmit = data => {
-
     const token = window.localStorage.getItem('react-context-jwt');
-    const formData = new FormData();
-    formData.append('image', data.imageUrl[0]);
     const req = {
       method: 'POST',
       headers: {
-        'Content-Type': formData,
+        'Content-Type': 'application/json',
         'X-Access-Token': token
       },
       body: JSON.stringify(data)
@@ -25,7 +22,7 @@ export default function PetForm() {
       })
       .catch(err => console.error(err));
     // eslint-disable-next-line no-console
-    console.log(errors);
+    console.error(errors);
   };
 
   if (isSubmitSuccessful === true) {
@@ -38,7 +35,7 @@ export default function PetForm() {
         <h1 className='d-flex justify-content-center raleway'>Create A New Pet Profile</h1>
         <div className='row'>
           <div className='col'>
-            <input className='form-control mb-2' type="file" {...register('imageUrl', { required: true })} />
+            <input className='form-control mb-2' type="text" placeholder="Image Url" {...register('imageUrl', {})} />
           </div>
         </div>
 

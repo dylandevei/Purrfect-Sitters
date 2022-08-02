@@ -22,17 +22,16 @@
   padding: 2rem 0;
 }
 
-
 .nav-text {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
 }
 
 .lato {
-  font-family: 'Lato', sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 .raleway {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
 }
 
 #root {
@@ -40,35 +39,34 @@
   height: 100%;
 }
 
-.customNav{
-  background-color: #6AC1B8;
+.custom-nav {
+  background-color: #6ac1b8;
 }
 
-.custom-button{
-  background-color: #6AC1B8;
+.custom-button {
+  background-color: #6ac1b8;
   border: none;
   width: 100%;
   padding: 2%;
   border-radius: 12px;
   color: white;
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 1rem;
 }
 
-
-.custom-container{
+.custom-container {
   background-color: #e1f6f4;
 }
 
 .scroll {
-    height: 20rem;
-    overflow-y: scroll;
+  height: 20rem;
+  overflow-y: scroll;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-button{
+button {
   cursor: pointer;
 }
