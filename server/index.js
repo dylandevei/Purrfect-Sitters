@@ -320,8 +320,8 @@ app.post('/api/sitters', (req, res, next) => {
 
 app.post('/api/users/pets', uploadsMiddleware, (req, res, next) => {
   const { userId } = req.user;
-  const imageUrl = `/images/${req.file.filename}`;
   const {
+    imageUrl,
     petType,
     petName,
     weight,
