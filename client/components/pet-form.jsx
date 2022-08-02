@@ -22,7 +22,7 @@ export default function PetForm() {
       })
       .catch(err => console.error(err));
     // eslint-disable-next-line no-console
-    console.log(errors);
+    console.error(errors);
   };
 
   if (isSubmitSuccessful === true) {
