@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 export default function SitterForm() {
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { isSubmitSuccessful, errors } } = useForm();
 
   const onSubmit = data => {
     const token = window.localStorage.getItem('react-context-jwt');
@@ -24,6 +24,10 @@ export default function SitterForm() {
     // eslint-disable-next-line no-console
     console.error(errors);
   };
+
+  if (isSubmitSuccessful === true) {
+    window.location.hash = '#';
+  }
 
   return (
     <div className='container-sm px-4 mt-5'>
