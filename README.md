@@ -35,10 +35,10 @@ Try the application live at [[https://purrfect-sitters.herokuapp.com/)](https://
 
 ## Stretch Features
 
--Users can real-time chat with each other (socket.io)
--Users can update their profiles
--Users can delete their profiles (pet profile or stop becoming a sitter)  
--Users can search sitters by location
+- Users can real-time chat with each other (socket.io)
+- Users can update their profiles
+- Users can delete their profiles (pet profile or stop becoming a sitter)  
+- Users can search sitters by location
 
 
 
