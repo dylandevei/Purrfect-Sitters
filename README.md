@@ -14,6 +14,7 @@ A Full-Stack  application for pet owners to find and become pet sitters in their
 - JavaScript
 - Google API
 - React
+- BootStrap
 
 
 ## Live Demo
