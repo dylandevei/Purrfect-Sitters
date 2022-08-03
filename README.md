@@ -5,16 +5,16 @@ A Full-Stack  application for pet owners to find and become pet sitters in their
 
 ## Technologies Used
 
-- PostgreSQL
-- Express
-- argon2
-- jwt
 - HTML5
 - CSS3
 - JavaScript
 - Google API
 - React
 - BootStrap
+- PostgreSQL
+- Express
+- argon2
+- jwt
 
 
 ## Live Demo
@@ -86,6 +86,10 @@ https://user-images.githubusercontent.com/99229316/182493888-2bd1d190-df63-4325-
    4. Start your project. Once started, you can view the application by visiting http://localhost:3000 in your broswer.
           
     npm run dev
+    
+   5. Feel Free to sign into the demo user account and try out the app! 
+   - **Username:** demouser
+   - **Password:** demo123
     
  
 
