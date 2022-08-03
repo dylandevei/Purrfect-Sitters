@@ -19,8 +19,7 @@ A Full-Stack  application for pet owners to find and become pet sitters in their
 
 ## Live Demo
 
-Try the application live at [[https://purrfect-sitters.herokuapp.com/)](https://purrfect-sitters.herokuapp.com/)]
-
+Try the application live at [https://purrfect-sitters.herokuapp.com/](https://purrfect-sitters.herokuapp.com/)
 ## Features
 
 - Users can register for an account
