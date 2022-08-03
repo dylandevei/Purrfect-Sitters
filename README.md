@@ -46,14 +46,19 @@ Try the application live at [[https://purrfect-sitters.herokuapp.com/)](https://
 ## Preview
 
 
+**View Lists of Profiles**
 
 https://user-images.githubusercontent.com/99229316/182698665-7fce7c85-9797-47b9-b20a-ac7dd0cf9e8e.mov
 
+
+**Pet Sitter Profile Creation**
 
 https://user-images.githubusercontent.com/99229316/182698714-523263e9-3f69-4086-89e4-fc664bcc015d.mov
 
 
 
+
+**Pet Profile Creation**
 
 https://user-images.githubusercontent.com/99229316/182699332-d01fd352-74f6-4992-a299-46c4304aeb9b.mov
 
