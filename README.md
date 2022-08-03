@@ -55,6 +55,10 @@ https://user-images.githubusercontent.com/99229316/182492637-7fce1d40-505d-46b5-
 https://user-images.githubusercontent.com/99229316/182493888-2bd1d190-df63-4325-95ca-16122825090e.mov
 
 
+## System Requirements
+- Node.js 10 or higher
+- npm 6 or higher
+- PostgreSQL 10 or higher
 
 ## Getting Started 
 
@@ -65,4 +69,27 @@ https://user-images.githubusercontent.com/99229316/182493888-2bd1d190-df63-4325-
     cd Purrfect-Sitters
     ```
     
-2. Start the project. Once started you can view the application by opening http://localhost:5500 in your browser .
+2. Install all dependencies with NPM.
+  
+      ```shell
+    npm install
+    ```
+    
+ 3. Copy .env.example
+
+    ```shell
+    cp .env.example .env
+    ```
+    
+    **Don't forget to change the name of database to your unique database name**
+    
+  4. Start your project. Once started, you can view the application by visiting http://localhost:3000 in your broswer.
+          
+    npm run dev
+    
+ 
+
+
+
+
+
