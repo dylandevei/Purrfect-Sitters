@@ -61,8 +61,8 @@ https://user-images.githubusercontent.com/99229316/182493888-2bd1d190-df63-4325-
 1. Clone the repository.
 
     ```shell
-    git clone https://github.com/dylandevei/FindTheFlick.git
-    cd FindTheFlick
+    git clone dylandevei/Purrfect-Sitters.git
+    cd Purrfect-Sitters
     ```
     
 2. Start the project. Once started you can view the application by opening http://localhost:5500 in your browser .
