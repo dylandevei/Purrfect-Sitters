@@ -83,7 +83,7 @@ https://user-images.githubusercontent.com/99229316/182493888-2bd1d190-df63-4325-
     
     **Don't forget to change the name of database to your unique database name**
     
-  4. Start your project. Once started, you can view the application by visiting http://localhost:3000 in your broswer.
+   4. Start your project. Once started, you can view the application by visiting http://localhost:3000 in your broswer.
           
     npm run dev
     
