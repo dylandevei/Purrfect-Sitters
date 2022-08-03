@@ -26,7 +26,7 @@ export default function SitterForm() {
   };
 
   if (isSubmitSuccessful === true) {
-    window.location.hash = '#';
+    window.location.hash = '#my-account';
   }
 
   return (
