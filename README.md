@@ -8,7 +8,7 @@ A Full-Stack  application for pet owners to find and become pet sitters in their
 - PostgreSQL
 - Express
 - argon2
-- Json Web Token
+- jwt
 - HTML5
 - CSS3
 - JavaScript
