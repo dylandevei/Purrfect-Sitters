@@ -74,47 +74,7 @@ CREATE TABLE "public"."sitters" (
 
 
 
-CREATE TABLE "public"."favorites" (
-	"profileId" int NOT NULL,
-	"userId" int NOT NULL
-) WITH (
-  OIDS=FALSE
-);
-
-
-
-CREATE TABLE "public"."comments" (
-	"commentId" serial NOT NULL,
-	"userId" int NOT NULL,
-	"content" TEXT NOT NULL,
-	"profileId" int NOT NULL,
-	"createdAt" serial NOT NULL DEFAULT 'now()',
-	CONSTRAINT "comments_pk" PRIMARY KEY ("commentId")
-) WITH (
-  OIDS=FALSE
-);
-
-
-
-CREATE TABLE "public"."friends" (
-	"userId" int NOT NULL,
-	"profileId" int NOT NULL
-) WITH (
-  OIDS=FALSE
-);
-
-
-
 
 ALTER TABLE "pets" ADD CONSTRAINT "pets_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
 
 ALTER TABLE "sitters" ADD CONSTRAINT "sitters_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
-
-ALTER TABLE "favorites" ADD CONSTRAINT "favorites_fk0" FOREIGN KEY ("profileId") REFERENCES "sitters"("profileId");
-ALTER TABLE "favorites" ADD CONSTRAINT "favorites_fk1" FOREIGN KEY ("userId") REFERENCES "users"("userId");
-
-ALTER TABLE "comments" ADD CONSTRAINT "comments_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
-ALTER TABLE "comments" ADD CONSTRAINT "comments_fk1" FOREIGN KEY ("profileId") REFERENCES "sitters"("profileId");
-
-ALTER TABLE "friends" ADD CONSTRAINT "friends_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
-ALTER TABLE "friends" ADD CONSTRAINT "friends_fk1" FOREIGN KEY ("profileId") REFERENCES "sitters"("profileId");
