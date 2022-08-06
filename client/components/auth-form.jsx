@@ -62,6 +62,7 @@ export default class AuthForm extends React.Component {
             type="text"
             name="username"
             onChange={handleChange}
+            value = {this.state.username}
             className="form-control bg-light" />
         </div>
         <div className="mb-3">
@@ -74,6 +75,7 @@ export default class AuthForm extends React.Component {
             type="password"
             name="password"
             onChange={handleChange}
+            value={this.state.password}
             className="form-control bg-light" />
         </div>
         <div className= "mb-3">
