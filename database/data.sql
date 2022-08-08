@@ -3,9 +3,7 @@ values
        ('Dylan22', '$argon2i$v=19$m=4096,t=3,p=1$h7icQD/xZr8akZsX+hNA0A$h68atJWyjvunAwNOpSpMfg9sPvoMQ6dKwwddwdwdwd'),
        ('Crash94', '$argon2i$v=19$m=4096,t=3,p=1$h7icQD/xZr8akZsX+hNA0A$h68atJWyjvunAwNOpSpMfg9sPvoMQ6dKwwddwdwdwd'),
        ('DukeNukem1', '$argon2i$v=19$m=4096,t=3,p=1$h7icQD/xZr8akZsX+hNA0A$h68atJWyjvunAwNOpSpMfg9sPvoMQ6dKwwddwdwdwd'),
-       ('SuperMario64', '$argon2i$v=19$m=4096,t=3,p=1$h7icQD/xZr8akZsX+hNA0A$h68atJWyjvunAwNOpSpMfg9sPvoMQ6dKwwddwdwdwd'),
-       ('BanjoKazooie1', '$argon2i$v=19$m=4096,t=3,p=1$h7icQD/xZr8akZsX+hNA0A$h68atJWyjvunAwNOpSpMfg9sPvoMQ6dKwwddwdwdwd'),
-       ('Kirby2022', '$argon2i$v=19$m=4096,t=3,p=1$h7icQD/xZr8akZsX+hNA0A$h68atJWyjvunAwNOpSpMfg9sPvoMQ6dKwwddwdwdwd');
+       ('demouser', '$argon2i$v=19$m=4096,t=3,p=1$AgcRB7agH35jmoRqykgUCA$CCxNp3C6L7kghLbxKu/KyHU2nQTSoL/Twqf6ANrZeQY');
 
 insert into "sitters"
       ("userId","imageUrl","fullName", "phoneNumber",
@@ -33,12 +31,12 @@ He was once an ordinary bandicoot until he was exposed to the Evolvo-Ray by his 
         'I came here to pet sit and chew bubblegum, and Im all out of gum', 'Dog', 'house sitting',
         'drop-by visits', 'dog-walking','overnight boarding', '45', '60', '70', '100',
         'Duke Nukem is an American hero and worldwide cultural icon who has repeatedly saved Earth from armies of hostile robots, alien invaders, and mutant pig cops. He is the protagonist of an entire franchise named after him'),
-        ('4','https://mario.wiki.gallery/images/3/3e/MPSS_Mario.png',
-        'Super Mario', '9499491000',
+        ('4','https://assets.rbl.ms/25592339/origin.jpg',
+        'Demo User', '9499491000',
         '9200 Irvine Center Dr', 'Irvine', '92618', 'CA',
-        'Its a me, Mario', 'Dog', 'house sitting',
+        'I am a demo user', 'Dog', 'House Sitting',
         'Drop-by Visits', 'Dog-Walking','Overnight Boarding', '60', '80', '150', '200',
-        'Mario has appeared in over 200 video games since his creation. Depicted as a short, pudgy, Italian plumber who resides in the Mushroom Kingdom, his adventures generally center on rescuing Princess Peach from the Koopa villain Bowser. Mario has access to a variety of power-ups that give him different abilities.')
+        'Demo user biography! Here is where your biography would go. You can add whatever you like, whether it is useful information about yourself or what your experience with pet sitting is!')
         ;
 
 insert into "pets"
