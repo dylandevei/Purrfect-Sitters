@@ -36,7 +36,7 @@
 
 #root {
   background-color: #e1f6f4;
-  height: 100vh;
+  position: relative;
 }
 
 .custom-nav {
